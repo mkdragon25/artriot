@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIOT ART // Creative Chaos Co.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Archivo+Black&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric-orange: #FF4500;
+            --acid-lime: #CCFF00;
+            --cyber-magenta: #FF00FF;
+            --shock-blue: #00FFFF;
+            --toxic-yellow: #FFFF00;
+            --concrete: #CCCCCC;
+            --asphalt: #0A0A0A;
+            --steel: #4A4A4A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: var(--asphalt);
+            color: var(--concrete);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Concrete texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    rgba(255, 255, 255, 0.03) 4px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    rgba(255, 255, 255, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+
+        /* Spray paint drips */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(180deg, transparent 0%, var(--electric-orange) 1%, transparent 3%),
+                linear-gradient(180deg, transparent 10%, var(--acid-lime) 11%, transparent 13%),
+                linear-gradient(180deg, transparent 20%, var(--cyber-magenta) 21%, transparent 23%),
+                linear-gradient(180deg, transparent 30%, var(--shock-blue) 31%, transparent 33%);
+            background-size: 8% 100%, 12% 100%, 15% 100%, 6% 100%;
+            background-position: 10% 0, 40% 0, 70% 0, 85% 0;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* Brutalist header */
+        header {
+            padding: 2rem 0;
+            border-bottom: 8px solid var(--electric-orange);
+            position: relative;
+            background: linear-gradient(to right, var(--asphalt) 0%, var(--steel) 100%);
+        }
+
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 5rem;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            position: relative;
+            display: inline-block;
+            line-height: 0.9;
+        }
+
+        .logo::before {
+            content: 'RIOT ART';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            color: var(--electric-orange);
+            z-index: -1;
+        }
+
+        .logo::after {
+            content: '//';
+            position: absolute;
+            right: -60px;
+            top: 0;
+            color: var(--acid-lime);
+            font-size: 4rem;
+        }
+
+        .tagline {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            color: var(--acid-lime);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-top: 2rem;
+            display: flex;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Antonio', sans-serif;
+            font-size: 1.8rem;
+            color: var(--asphalt);
+            background: var(--concrete);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-right: 3px solid var(--asphalt);
+            transition: all 0.2s ease;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+
+        nav a:last-child {
+            border-right: none;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--electric-orange);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--concrete);
+        }
+
+        nav a:nth-child(1):hover::before { background: var(--electric-orange); }
+        nav a:nth-child(2):hover::before { background: var(--acid-lime); }
+        nav a:nth-child(3):hover::before { background: var(--cyber-magenta); }
+        nav a:nth-child(4):hover::before { background: var(--shock-blue); }
+
+        /* Hero section with geometric brutalism */
+        .hero {
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: linear-gradient(45deg, var(--electric-orange), var(--cyber-magenta));
+            top: -400px;
+            right: -400px;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            opacity: 0.1;
+            animation: rotateShape 20s linear infinite;
+        }
+
+        @keyframes rotateShape {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 12vw, 10rem);
+            line-height: 0.85;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: -5px;
+        }
+
+        .hero h1 .line {
+            display: block;
+            position: relative;
+        }
+
+        .hero h1 .line:nth-child(1) {
+            color: var(--electric-orange);
+            text-shadow: 5px 5px 0 var(--asphalt);
+            animation: slideRight 1s ease-out;
+        }
+
+        .hero h1 .line:nth-child(2) {
+            color: var(--acid-lime);
+            text-shadow: -5px 5px 0 var(--asphalt);
+            animation: slideLeft 1s ease-out 0.2s backwards;
+        }
+
+        .hero h1 .line:nth-child(3) {
+            color: var(--shock-blue);
+            text-shadow: 5px -5px 0 var(--asphalt);
+            animation: slideRight 1s ease-out 0.4s backwards;
+        }
+
+        @keyframes slideRight {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideLeft {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            color: var(--concrete);
+            border-left: 8px solid var(--electric-orange);
+            padding-left: 2rem;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: 'Antonio', sans-serif;
+            font-size: 2.5rem;
+            padding: 1.5rem 4rem;
+            background: var(--electric-orange);
+            color: var(--asphalt);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border: none;
+            position: relative;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+            transition: all 0.3s ease;
+            box-shadow: 10px 10px 0 var(--acid-lime);
+        }
+
+        .cta-button:hover {
+            background: var(--acid-lime);
+            transform: translate(5px, 5px);
+            box-shadow: 5px 5px 0 var(--electric-orange);
+        }
+
+        .cta-button:active {
+            transform: translate(10px, 10px);
+            box-shadow: 0 0 0 var(--electric-orange);
+        }
+
+        /* Philosophy section with warehouse aesthetic */
+        .philosophy {
+            padding: 8rem 0;
+            background: var(--steel);
+            position: relative;
+            border-top: 8px solid var(--acid-lime);
+            border-bottom: 8px solid var(--cyber-magenta);
+        }
+
+        .philosophy::before {
+            content: 'NO RULES';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 15rem;
+            color: var(--asphalt);
+            opacity: 0.1;
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: -10px;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .philosophy-card {
+            background: var(--asphalt);
+            padding: 3rem;
+            border: 4px solid var(--concrete);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.3s ease;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .philosophy-card:hover::before {
+            height: 100%;
+        }
+
+        .philosophy-card:nth-child(1) { --accent: var(--electric-orange); border-top: 8px solid var(--electric-orange); }
+        .philosophy-card:nth-child(2) { --accent: var(--acid-lime); border-top: 8px solid var(--acid-lime); }
+        .philosophy-card:nth-child(3) { --accent: var(--cyber-magenta); border-top: 8px solid var(--cyber-magenta); }
+        .philosophy-card:nth-child(4) { --accent: var(--shock-blue); border-top: 8px solid var(--shock-blue); }
+
+        .philosophy-card h3 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .philosophy-card p {
+            line-height: 1.8;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        /* Products section */
+        .products {
+            padding: 8rem 0;
+            background: var(--asphalt);
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 6rem;
+            text-align: left;
+            margin-bottom: 4rem;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(to right, var(--electric-orange), var(--cyber-magenta));
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .product-card {
+            background: var(--steel);
+            padding: 4rem 3rem;
+            border: 4px solid var(--concrete);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: top 0.5s ease;
+            z-index: 0;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        }
+
+        .product-card:hover::before {
+            top: 0;
+        }
+
+        .product-card:nth-child(1) { --accent: var(--electric-orange); }
+        .product-card:nth-child(2) { --accent: var(--acid-lime); }
+        .product-card:nth-child(3) { --accent: var(--cyber-magenta); }
+
+        .product-number {
+            display: none;
+        }
+
+        .product-card h3 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card p {
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+        }
+
+        /* Pricing section */
+        .pricing {
+            padding: 8rem 0;
+            background: var(--asphalt);
+            border-top: 8px solid var(--electric-orange);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--steel);
+            border: 4px solid var(--concrete);
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--accent);
+            transition: height 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.3);
+        }
+
+        .pricing-card:hover::before {
+            height: 100%;
+            opacity: 0.1;
+        }
+
+        .pricing-public { --accent: var(--acid-lime); }
+        .pricing-private { --accent: var(--electric-orange); }
+        .pricing-premium { --accent: var(--cyber-magenta); }
+        .pricing-corporate { --accent: var(--shock-blue); }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--electric-orange);
+            color: var(--asphalt);
+            padding: 0.5rem 3rem;
+            font-family: 'Antonio', sans-serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transform: rotate(45deg);
+            z-index: 2;
+        }
+
+        .pricing-header {
+            padding: 3rem 2rem 2rem;
+            border-bottom: 3px solid var(--asphalt);
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-header h3 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .pricing-amount {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3rem;
+            color: var(--concrete);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-unit {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pricing-body {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-body ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-body li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--asphalt);
+            font-size: 1rem;
+            color: var(--concrete);
+        }
+
+        .pricing-body li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            font-family: 'Antonio', sans-serif;
+            font-size: 1.3rem;
+            padding: 1rem;
+            background: var(--asphalt);
+            color: var(--concrete);
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 3px solid var(--accent);
+            transition: all 0.3s ease;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+        }
+
+        .pricing-btn:hover {
+            background: var(--accent);
+            color: var(--asphalt);
+            transform: translateY(-3px);
+        }
+
+        .pricing-btn-featured {
+            background: var(--electric-orange);
+            color: var(--asphalt);
+            border-color: var(--electric-orange);
+        }
+
+        .pricing-btn-featured:hover {
+            background: var(--asphalt);
+            color: var(--electric-orange);
+        }
+
+        .pricing-addons {
+            margin-top: 6rem;
+            padding: 3rem;
+            background: var(--steel);
+            border: 4px solid var(--concrete);
+            border-top: 8px solid var(--acid-lime);
+        }
+
+        .pricing-addons h3 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 2.5rem;
+            color: var(--acid-lime);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .addon-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--asphalt);
+            border-left: 4px solid var(--acid-lime);
+        }
+
+        .addon-name {
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            color: var(--concrete);
+        }
+
+        .addon-price {
+            font-family: 'Antonio', sans-serif;
+            font-size: 1.5rem;
+            color: var(--acid-lime);
+        }
+
+        /* CTA section with urban graffiti */
+        .final-cta {
+            padding: 10rem 0;
+            text-align: center;
+            background: 
+                linear-gradient(135deg, var(--asphalt) 0%, var(--steel) 100%);
+            position: relative;
+            overflow: hidden;
+            border-top: 8px solid var(--shock-blue);
+        }
+
+        .final-cta::before {
+            content: '///';
+            position: absolute;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 30rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--concrete);
+        }
+
+        .final-cta h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            margin-bottom: 2rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            color: var(--electric-orange);
+            text-shadow: 5px 5px 0 var(--acid-lime), 10px 10px 0 var(--cyber-magenta);
+        }
+
+        .final-cta p {
+            font-size: 1.5rem;
+            margin-bottom: 4rem;
+            position: relative;
+            color: var(--concrete);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background: var(--asphalt);
+            border-top: 8px solid var(--electric-orange);
+            text-align: center;
+        }
+
+        footer p {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.1rem;
+            color: var(--concrete);
+            font-weight: bold;
+        }
+
+        /* Geometric decorative elements */
+        .geo-shape {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .geo-1 {
+            top: 20%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            background: var(--electric-orange);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .geo-2 {
+            top: 60%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: var(--acid-lime);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .geo-3 {
+            bottom: 30%;
+            left: 15%;
+            width: 180px;
+            height: 180px;
+            background: var(--cyber-magenta);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: float 12s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .addons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                border-right: none;
+                border-bottom: 3px solid var(--asphalt);
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .product-number {
+                font-size: 6rem;
+            }
+        }
+
+        /* Glitch effect on hover */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch:hover::before,
+        .glitch:hover::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch:hover::before {
+            animation: glitch-1 0.3s infinite;
+            color: var(--cyber-magenta);
+            z-index: -1;
+        }
+
+        .glitch:hover::after {
+            animation: glitch-2 0.3s infinite;
+            color: var(--acid-lime);
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitch-2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(3px, -3px); }
+            40% { transform: translate(3px, 3px); }
+            60% { transform: translate(-3px, -3px); }
+            80% { transform: translate(-3px, 3px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Geometric decorative shapes -->
+    <div class="geo-shape geo-1"></div>
+    <div class="geo-shape geo-2"></div>
+    <div class="geo-shape geo-3"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo glitch" data-text="RIOT ART">RIOT ART</div>
+            <div class="tagline">// Creative Chaos Co.</div>
+            <nav>
+                <a href="#about">ABOUT</a>
+                <a href="#events">EVENTS</a>
+                <a href="#products">PRODUCTS</a>
+                <a href="#pricing">PRICING</a>
+                <a href="#book">BOOK</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>
+                <span class="line">ART AS</span>
+                <span class="line">RELEASE</span>
+                <span class="line">NOT PERFECTION</span>
+            </h1>
+            <p>
+                // IMPERFECTION ON PURPOSE // We're not selling art—we're selling permission. 
+                Permission to be messy, to feel something, and to make art without approval.
+            </p>
+            <a href="#book" class="cta-button">START RIOT</a>
+        </section>
+    </div>
+
+    <section class="philosophy" id="about">
+        <div class="container">
+            <h2 class="section-title">PHILOSOPHY//</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>IMPERFECT = POINT</h3>
+                    <p>// Most people think art is about being good. We think it's about being honest. Every flaw tells a story. Mistakes are features.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>MESS = FREEDOM</h3>
+                    <p>// When you stop trying to be perfect, you start creating something real. Chaos is where creativity lives. Embrace the disorder.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>RELEASE > PERFORMANCE</h3>
+                    <p>// Art should be cathartic, not Instagram-ready. This is about feeling, not followers. Process over product.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>QUIETLY REBELLIOUS</h3>
+                    <p>// No rules. No "good taste." No pressure. Just you, materials, and permission to break things beautifully.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">WHAT WE OFFER//</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-number">01</span>
+                    <h3>CATHARTIC EVENTS</h3>
+                    <p>// Splatter paint parties. Divorce art nights. Break-up release sessions. Corporate chaos. Mobile experiences where mess is mandatory.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-number">02</span>
+                    <h3>UGLY ART</h3>
+                    <p>// Handmade mugs and objects that celebrate imperfection. Each piece has personality, flaws, and attitude. Limited drops. Premium pricing. Zero apologies.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-number">03</span>
+                    <h3>MERCH MATTERS</h3>
+                    <p>// Original designs that don't try too hard. Stickers, shirts, and prints for people who are tired of perfect. Art you can wear and share.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">PRICING//</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card pricing-public">
+                    <div class="pricing-header">
+                        <h3>PUBLIC EVENTS</h3>
+                        <div class="pricing-amount">$45-$75</div>
+                        <div class="pricing-unit">per person</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li>// 1.5-2 hours</li>
+                            <li>// Materials included</li>
+                            <li>// Low commitment</li>
+                            <li>// Perfect for first-timers</li>
+                        </ul>
+                        <a href="#book" class="pricing-btn">BOOK TICKET</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card pricing-private">
+                    <div class="pricing-badge">MOST POPULAR</div>
+                    <div class="pricing-header">
+                        <h3>PRIVATE PARTIES</h3>
+                        <div class="pricing-amount">$450-$750</div>
+                        <div class="pricing-unit">base (8-12 people)</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li>// Setup + cleanup included</li>
+                            <li>// Guided chaos facilitation</li>
+                            <li>// All materials provided</li>
+                            <li>// +$35-$60 per extra guest</li>
+                            <li>// Add-ons available</li>
+                        </ul>
+                        <a href="#book" class="pricing-btn pricing-btn-featured">BOOK PARTY</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card pricing-premium">
+                    <div class="pricing-header">
+                        <h3>RELEASE SESSIONS</h3>
+                        <div class="pricing-amount">$900-$2K+</div>
+                        <div class="pricing-unit">premium</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li>// Divorce / breakup sessions</li>
+                            <li>// Smaller intimate groups</li>
+                            <li>// Deep facilitation</li>
+                            <li>// Custom structure</li>
+                            <li>// Emotional space-holding</li>
+                        </ul>
+                        <a href="#book" class="pricing-btn">INQUIRE</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card pricing-corporate">
+                    <div class="pricing-header">
+                        <h3>CORPORATE EVENTS</h3>
+                        <div class="pricing-amount">$1.5K-$5K+</div>
+                        <div class="pricing-unit">custom</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li>// Custom branding available</li>
+                            <li>// Any group size</li>
+                            <li>// Team building chaos</li>
+                            <li>// Your location or ours</li>
+                            <li>// Employee stress release</li>
+                        </ul>
+                        <a href="#book" class="pricing-btn">GET QUOTE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-addons">
+                <h3>ADD-ONS // UPGRADES</h3>
+                <div class="addons-grid">
+                    <div class="addon-item">
+                        <span class="addon-name">Splatter Upgrade</span>
+                        <span class="addon-price">+$100-$200</span>
+                    </div>
+                    <div class="addon-item">
+                        <span class="addon-name">Destructive Art Elements</span>
+                        <span class="addon-price">+$150</span>
+                    </div>
+                    <div class="addon-item">
+                        <span class="addon-name">Take-Home Art Objects</span>
+                        <span class="addon-price">+$20-$40/person</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="book">
+        <div class="container">
+            <h2 class="glitch" data-text="READY TO RIOT?">READY TO RIOT?</h2>
+            <p>// Book an event. Buy something weird. Join the rebellion against perfection.</p>
+            <a href="mailto:hello@riotart.co" class="cta-button">CONTACT</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>// ART YOU CAN HOLD // ART YOU CAN LIVE THROUGH //</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.6;">© 2024 RIOT ART | CREATIVE CHAOS CO.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect on geometric shapes
+        let scrollPos = 0;
+        window.addEventListener('scroll', () => {
+            scrollPos = window.scrollY;
+            
+            document.querySelectorAll('.geo-shape').forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                shape.style.transform = `translateY(${scrollPos * speed}px) rotate(${scrollPos * 0.1}deg)`;
+            });
+        });
+
+        // Random glitch effect on scroll
+        const glitchElements = document.querySelectorAll('.glitch');
+        let glitchInterval;
+        
+        window.addEventListener('scroll', () => {
+            clearTimeout(glitchInterval);
+            glitchInterval = setTimeout(() => {
+                glitchElements.forEach(el => {
+                    if (Math.random() > 0.7) {
+                        el.style.animation = 'glitch-1 0.3s';
+                        setTimeout(() => {
+                            el.style.animation = '';
+                        }, 300);
+                    }
+                });
+            }, 100);
+        });
+
+        // Hover effect on product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
